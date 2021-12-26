@@ -1,0 +1,33 @@
+[server]
+address = ":30080"
+
+[token]
+# token 有效时长(秒)
+timeout = 604800
+# 是否只允许账号唯一登录
+multiple = true
+# 自动刷新有效时长
+refresh = 0
+# 保存模式。 0: memory, 1: redis
+mode = 0
+# 若保存模式为 redis， 则使用的 redis 名
+redis = ""
+# 删除过期 token 的计划任务, 默认每天凌晨 2 点执行: 0 0 2 * * *
+clearCron = "0 0 2 * * *"
+
+# 登录接口
+loginPath = "/api/login"
+# 过滤的接口前缀(allowList 列表的接口前面添加此前缀)
+allowPrefix = "/api"
+# 过滤的接口地址。
+allowList = [
+    "get: /index",
+    "post: /logout",
+    "put:",
+    "delete:",
+    "all:",
+]
+# 获取 token 的位置。允许 header, get, post 方式，如 ["header", "get", "post"]
+method = ["header", "get", "post"]
+# 获取 token 的键名
+key = "Authorization"
